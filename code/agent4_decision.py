@@ -104,27 +104,39 @@ Object part enum discipline:
   "package exterior"; "front_bumper" not "front end".
 
 Severity anchors:
-- none: no visible damage on the relevant inspected area.
-- low: cosmetic/minor damage such as light scratch, small dent, slight corner
-  dent, minor scuff, or small tear that does not expose contents or structure.
-- medium: clear damage that is visible and claim-relevant, such as a moderate
-  dent, visible crack, broken hinge/mirror, torn seal, water stain, or crushed
-  corner, but not catastrophic.
-- high: severe structural damage, shattered glass, missing major parts,
-  exposed contents, extensive crushing, or damage that makes the object
-  unusable or unsafe.
-- unknown: image quality or angle does not support a reliable severity estimate.
-Do not default upward when uncertain. If choosing between two severities, choose
-the lower severity unless severe structural damage is clearly visible; use
-unknown when the image cannot support a severity judgment.
+- none: the relevant inspected area is visible and no damage is visible.
+- low: minor cosmetic/local damage only, such as a light scratch, small scuff,
+  shallow dent, slight corner dent, small packaging tear, or minor stain. Low
+  means the object still appears structurally intact and usable.
+- medium: clear localized damage that is more than cosmetic but not catastrophic,
+  such as a visible crack, moderate dent, broken hinge/mirror, torn seal, water
+  stain, crushed package corner, or localized part damage.
+- high: reserve for severe, extensive, structural, unsafe, or function-ending
+  damage: wrecked vehicle front end, shattered glass, missing major part,
+  exposed package contents, extensive crushing, or damage that clearly makes
+  the object unusable.
+- unknown: the image quality, angle, or evidence does not support a reliable
+  severity estimate.
+Calibrate conservatively. Do not raise severity just because damage is visible.
+If uncertain between low and medium, choose low. If uncertain between medium and
+high, choose medium. Use high only when severe structural/extensive damage is
+plainly visible. Use unknown when severity cannot be judged.
 
 Claim-status nuance:
 - An issue_type mismatch by itself is not enough for contradicted.
 - If the claimed part is correct and real insurance-relevant damage is visible,
   reason about whether the visible damage is consistent with the user's broader
   damage claim even if the exact category differs.
+- But a severity or extent mismatch can be enough for contradicted. If the user
+  claims minor cosmetic damage such as a small scratch, mark, or scuff, but the
+  image shows severe structural damage, a wrecked vehicle, missing major parts,
+  exposed contents, or far more extensive damage, mark contradicted because the
+  visible damage is not the damage described.
+- Likewise, if the user claims severe damage but the image shows only minor
+  cosmetic damage, mark contradicted for overstated extent.
 - Mark contradicted only when the image clearly shows no damage, the wrong part,
-  the wrong object, or a clearly different and irreconcilable issue.
+  the wrong object, a clearly different irreconcilable issue, or a clear
+  severity/extent mismatch between the claim description and visible evidence.
 - Otherwise lean toward supported when damage is visible on the claimed part and
   evidence requirements are met, or not_enough_information when the image cannot
   resolve the claim.
