@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Generated outputs
+output.csv
+code/evaluation/sample_predictions.csv
+code/evaluation/eval_results.json
+code/evaluation/evaluation_report.md
+*.log
+
+# Archives and local build artifacts
+*.zip
+repo-zip.zip
+evaluation/
+dist/
+build/
